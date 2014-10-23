@@ -78,7 +78,7 @@ declare module createjs {
         // methods
         static createInstance(src: string): SoundInstance;
         static getCapabilities(): Object;
-        static getCapability(key: string): any;    //HERE can return string | number | bool;
+        static getCapability(key: string): any;    //HERE can return string | number | boolean;
         static getMute(): boolean;
         static getVolume(): number;
         static initializeDefaultPlugins(): boolean;

@@ -34,7 +34,7 @@ intellisense.annotate(jQuery, {
   },
   'boxModel': function() {
     /// <summary>Deprecated in jQuery 1.3 (see jQuery.support). States if the current page, in the user's browser, is being rendered using the W3C CSS Box Model.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'browser': function() {
     /// <summary>Contains flags for the useragent, read from navigator.userAgent. This property was removed in jQuery 1.9 and is available only through the jQuery.migrate plugin. Please try to use feature detection instead.</summary>
@@ -56,7 +56,7 @@ intellisense.annotate(jQuery, {
     ///   <summary>Check to see if a DOM element is a descendant of another DOM element.</summary>
     ///   <param name="container" type="Element">The DOM element that may contain the other element.</param>
     ///   <param name="contained" type="Element">The DOM element that may be contained by (a descendant of) the other element.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'cssHooks': function() {
@@ -114,7 +114,7 @@ intellisense.annotate(jQuery, {
     /// </signature>
     /// <signature>
     ///   <summary>Merge the contents of two or more objects together into the first object.</summary>
-    ///   <param name="deep" type="Boolean">If true, the merge becomes recursive (aka. deep copy).</param>
+    ///   <param name="deep" type="booleanean">If true, the merge becomes recursive (aka. deep copy).</param>
     ///   <param name="target" type="Object">The object to extend. It will receive the new properties.</param>
     ///   <param name="object1" type="Object">An object containing additional properties to merge in.</param>
     ///   <param name="objectN" type="Object">Additional objects containing properties to merge in.</param>
@@ -165,8 +165,8 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Finds the elements of an array which satisfy a filter function. The original array is not affected.</summary>
     ///   <param name="array" type="Array">The array to search through.</param>
-    ///   <param name="function(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the item, and the second argument is the index.  The function should return a Boolean value.  this will be the global window object.</param>
-    ///   <param name="invert" type="Boolean">If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback" returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns false.</param>
+    ///   <param name="function(elementOfArray, indexInArray)" type="Function">The function to process each item against.  The first argument to the function is the item, and the second argument is the index.  The function should return a booleanean value.  this will be the global window object.</param>
+    ///   <param name="invert" type="booleanean">If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback" returns true.  If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns false.</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -174,13 +174,13 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Determine whether an element has any jQuery data associated with it.</summary>
     ///   <param name="element" type="Element">A DOM element to be checked for data.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'holdReady': function() {
     /// <signature>
     ///   <summary>Holds or releases the execution of jQuery's ready event.</summary>
-    ///   <param name="hold" type="Boolean">Indicates whether the ready hold is being requested or released</param>
+    ///   <param name="hold" type="booleanean">Indicates whether the ready hold is being requested or released</param>
     /// </signature>
   },
   'inArray': function() {
@@ -196,49 +196,49 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Determine whether the argument is an array.</summary>
     ///   <param name="obj" type="Object">Object to test whether or not it is an array.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'isEmptyObject': function() {
     /// <signature>
     ///   <summary>Check to see if an object is empty (contains no enumerable properties).</summary>
     ///   <param name="object" type="Object">The object that will be checked to see if it's empty.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'isFunction': function() {
     /// <signature>
     ///   <summary>Determine if the argument passed is a Javascript function object.</summary>
     ///   <param name="obj" type="PlainObject">Object to test whether or not it is a function.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'isNumeric': function() {
     /// <signature>
     ///   <summary>Determines whether its argument is a number.</summary>
     ///   <param name="value" type="PlainObject">The value to be tested.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'isPlainObject': function() {
     /// <signature>
     ///   <summary>Check to see if an object is a plain object (created using "{}" or "new Object").</summary>
     ///   <param name="object" type="PlainObject">The object that will be checked to see if it's a plain object.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'isWindow': function() {
     /// <signature>
     ///   <summary>Determine whether the argument is a window.</summary>
     ///   <param name="obj" type="PlainObject">Object to test whether or not it is a window.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'isXMLDoc': function() {
     /// <signature>
     ///   <summary>Check to see if a DOM node is within an XML document (or is an XML document).</summary>
     ///   <param name="node" type="Element">The DOM node that will be checked to see if it's in an XML document.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'makeArray': function() {
@@ -273,7 +273,7 @@ intellisense.annotate(jQuery, {
   'noConflict': function() {
     /// <signature>
     ///   <summary>Relinquish jQuery's control of the $ variable.</summary>
-    ///   <param name="removeAll" type="Boolean">A Boolean indicating whether to remove all jQuery variables from the global scope (including jQuery itself).</param>
+    ///   <param name="removeAll" type="booleanean">A booleanean indicating whether to remove all jQuery variables from the global scope (including jQuery itself).</param>
     ///   <returns type="Object" />
     /// </signature>
   },
@@ -293,7 +293,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Create a serialized representation of an array or object, suitable for use in a URL query string or Ajax request.</summary>
     ///   <param name="obj" type="">An array or object to serialize.</param>
-    ///   <param name="traditional" type="Boolean">A Boolean indicating whether to perform a traditional "shallow" serialization.</param>
+    ///   <param name="traditional" type="booleanean">A booleanean indicating whether to perform a traditional "shallow" serialization.</param>
     ///   <returns type="String" />
     /// </signature>
   },
@@ -302,7 +302,7 @@ intellisense.annotate(jQuery, {
     ///   <summary>Parses a string into an array of DOM nodes.</summary>
     ///   <param name="data" type="String">HTML string to be parsed</param>
     ///   <param name="context" type="Element">Document element to serve as the context in which the HTML fragment will be created</param>
-    ///   <param name="keepScripts" type="Boolean">A Boolean indicating whether to include scripts passed in the HTML string</param>
+    ///   <param name="keepScripts" type="booleanean">A booleanean indicating whether to include scripts passed in the HTML string</param>
     ///   <returns type="Array" />
     /// </signature>
   },
@@ -437,7 +437,7 @@ intellisense.annotate(_object, {
   },
   'disabled': function() {
     /// <summary>Determine if the callbacks list has been disabled.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'empty': function() {
     /// <summary>Remove all of the callbacks from a list.</summary>
@@ -452,7 +452,7 @@ intellisense.annotate(_object, {
   },
   'fired': function() {
     /// <summary>Determine if the callbacks have already been called at least once.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'fireWith': function() {
     /// <signature>
@@ -466,7 +466,7 @@ intellisense.annotate(_object, {
     /// <signature>
     ///   <summary>Determine whether a supplied callback is in a list</summary>
     ///   <param name="callback" type="Function">The callback to search for.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'lock': function() {
@@ -475,7 +475,7 @@ intellisense.annotate(_object, {
   },
   'locked': function() {
     /// <summary>Determine if the callbacks list has been locked.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'remove': function() {
     /// <signature>
@@ -520,11 +520,11 @@ intellisense.annotate(_object, {
   },
   'isRejected': function() {
     /// <summary>Determine whether a Deferred object has been rejected.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'isResolved': function() {
     /// <summary>Determine whether a Deferred object has been resolved.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'notify': function() {
     /// <signature>
@@ -647,19 +647,19 @@ intellisense.annotate(jQuery.Event.prototype, {
   },
   'isDefaultPrevented': function() {
     /// <summary>Returns whether event.preventDefault() was ever called on this event object.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'isImmediatePropagationStopped': function() {
     /// <summary>Returns whether event.stopImmediatePropagation() was ever called on this event object.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'isPropagationStopped': function() {
     /// <summary>Returns whether event.stopPropagation() was ever called on this event object.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'metaKey': function() {
     /// <summary>Indicates whether the META key was pressed when the event fired.</summary>
-    /// <returns type="Boolean" />
+    /// <returns type="booleanean" />
   },
   'namespace': function() {
     /// <summary>The namespace specified when the event was triggered.</summary>
@@ -964,7 +964,7 @@ intellisense.annotate(jQuery.fn, {
     ///   <summary>Attach a handler to an event for the elements.</summary>
     ///   <param name="eventType" type="String">A string containing one or more DOM event types, such as "click" or "submit," or custom event names.</param>
     ///   <param name="eventData" type="Object">An object containing data that will be passed to the event handler.</param>
-    ///   <param name="preventBubble" type="Boolean">Setting the third argument to false will attach a function that prevents the default action from occurring and stops the event from bubbling. The default is true.</param>
+    ///   <param name="preventBubble" type="booleanean">Setting the third argument to false will attach a function that prevents the default action from occurring and stops the event from bubbling. The default is true.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1051,13 +1051,13 @@ intellisense.annotate(jQuery.fn, {
   'clone': function() {
     /// <signature>
     ///   <summary>Create a deep copy of the set of matched elements.</summary>
-    ///   <param name="withDataAndEvents" type="Boolean">A Boolean indicating whether event handlers should be copied along with the elements. As of jQuery 1.4, element data will be copied as well.</param>
+    ///   <param name="withDataAndEvents" type="booleanean">A booleanean indicating whether event handlers should be copied along with the elements. As of jQuery 1.4, element data will be copied as well.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Create a deep copy of the set of matched elements.</summary>
-    ///   <param name="withDataAndEvents" type="Boolean">A Boolean indicating whether event handlers and data should be copied along with the elements. The default value is false. *In jQuery 1.5.0 the default value was incorrectly true; it was changed back to false in 1.5.1 and up.</param>
-    ///   <param name="deepWithDataAndEvents" type="Boolean">A Boolean indicating whether event handlers and data for all children of the cloned element should be copied. By default its value matches the first argument's value (which defaults to false).</param>
+    ///   <param name="withDataAndEvents" type="booleanean">A booleanean indicating whether event handlers and data should be copied along with the elements. The default value is false. *In jQuery 1.5.0 the default value was incorrectly true; it was changed back to false in 1.5.1 and up.</param>
+    ///   <param name="deepWithDataAndEvents" type="booleanean">A booleanean indicating whether event handlers and data for all children of the cloned element should be copied. By default its value matches the first argument's value (which defaults to false).</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1461,7 +1461,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Determine whether any of the matched elements are assigned the given class.</summary>
     ///   <param name="className" type="String">The class name to search for.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'header': function() {
@@ -1600,22 +1600,22 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
     ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
     /// <signature>
     ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
     ///   <param name="function(index)" type="Function">A function used as a test for the set of elements. It accepts one argument, index, which is the element's index in the jQuery collection.Within the function, this refers to the current DOM element.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
     /// <signature>
     ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
     ///   <param name="jQuery object" type="Object">An existing jQuery object to match the current set of elements against.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
     /// <signature>
     ///   <summary>Check the current matched set of elements against a selector, element, or jQuery object and return true if at least one of these elements matches the given arguments.</summary>
     ///   <param name="element" type="Element">An element to match the current set of elements against.</param>
-    ///   <returns type="Boolean" />
+    ///   <returns type="booleanean" />
     /// </signature>
   },
   'jquery': function() {
@@ -2001,14 +2001,14 @@ intellisense.annotate(jQuery.fn, {
   'outerHeight': function() {
     /// <signature>
     ///   <summary>Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an integer (without "px") representation of the value or null if called on an empty set of elements.</summary>
-    ///   <param name="includeMargin" type="Boolean">A Boolean indicating whether to include the element's margin in the calculation.</param>
+    ///   <param name="includeMargin" type="booleanean">A booleanean indicating whether to include the element's margin in the calculation.</param>
     ///   <returns type="Number" />
     /// </signature>
   },
   'outerWidth': function() {
     /// <signature>
     ///   <summary>Get the current computed width for the first element in the set of matched elements, including padding and border.</summary>
-    ///   <param name="includeMargin" type="Boolean">A Boolean indicating whether to include the element's margin in the calculation.</param>
+    ///   <param name="includeMargin" type="booleanean">A booleanean indicating whether to include the element's margin in the calculation.</param>
     ///   <returns type="Number" />
     /// </signature>
   },
@@ -2400,15 +2400,15 @@ intellisense.annotate(jQuery.fn, {
   'stop': function() {
     /// <signature>
     ///   <summary>Stop the currently-running animation on the matched elements.</summary>
-    ///   <param name="clearQueue" type="Boolean">A Boolean indicating whether to remove queued animation as well. Defaults to false.</param>
-    ///   <param name="jumpToEnd" type="Boolean">A Boolean indicating whether to complete the current animation immediately. Defaults to false.</param>
+    ///   <param name="clearQueue" type="booleanean">A booleanean indicating whether to remove queued animation as well. Defaults to false.</param>
+    ///   <param name="jumpToEnd" type="booleanean">A booleanean indicating whether to complete the current animation immediately. Defaults to false.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Stop the currently-running animation on the matched elements.</summary>
     ///   <param name="queue" type="String">The name of the queue in which to stop animations.</param>
-    ///   <param name="clearQueue" type="Boolean">A Boolean indicating whether to remove queued animation as well. Defaults to false.</param>
-    ///   <param name="jumpToEnd" type="Boolean">A Boolean indicating whether to complete the current animation immediately. Defaults to false.</param>
+    ///   <param name="clearQueue" type="booleanean">A booleanean indicating whether to remove queued animation as well. Defaults to false.</param>
+    ///   <param name="jumpToEnd" type="booleanean">A booleanean indicating whether to complete the current animation immediately. Defaults to false.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2465,7 +2465,7 @@ intellisense.annotate(jQuery.fn, {
     /// </signature>
     /// <signature>
     ///   <summary>Display or hide the matched elements.</summary>
-    ///   <param name="showOrHide" type="Boolean">A Boolean indicating whether to show or hide the elements.</param>
+    ///   <param name="showOrHide" type="booleanean">A booleanean indicating whether to show or hide the elements.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2478,18 +2478,18 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
     ///   <param name="className" type="String">One or more class names (separated by spaces) to be toggled for each element in the matched set.</param>
-    ///   <param name="switch" type="Boolean">A Boolean (not just truthy/falsy) value to determine whether the class should be added or removed.</param>
+    ///   <param name="switch" type="booleanean">A booleanean (not just truthy/falsy) value to determine whether the class should be added or removed.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
-    ///   <param name="switch" type="Boolean">A boolean value to determine whether the class should be added or removed.</param>
+    ///   <param name="switch" type="booleanean">A booleanean value to determine whether the class should be added or removed.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
     ///   <summary>Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.</summary>
     ///   <param name="function(index, class, switch)" type="Function">A function that returns class names to be toggled in the class attribute of each element in the matched set. Receives the index position of the element in the set, the old class value, and the switch as arguments.</param>
-    ///   <param name="switch" type="Boolean">A boolean value to determine whether the class should be added or removed.</param>
+    ///   <param name="switch" type="booleanean">A booleanean value to determine whether the class should be added or removed.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2525,7 +2525,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Remove a previously-attached event handler from the elements.</summary>
     ///   <param name="eventType" type="String">A string containing a JavaScript event type, such as click or submit.</param>
-    ///   <param name="false" type="Boolean">Unbinds the corresponding 'return false' function that was bound using .bind( eventType, false ).</param>
+    ///   <param name="false" type="booleanean">Unbinds the corresponding 'return false' function that was bound using .bind( eventType, false ).</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>

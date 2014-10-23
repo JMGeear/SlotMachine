@@ -605,7 +605,7 @@ interface JQueryParam {
      * Create a serialized representation of an array or object, suitable for use in a URL query string or Ajax request.
      * 
      * @param obj An array or object to serialize.
-     * @param traditional A Boolean indicating whether to perform a traditional "shallow" serialization.
+     * @param traditional A boolean indicating whether to perform a traditional "shallow" serialization.
      */
     (obj: any, traditional: boolean): string;
 }
@@ -667,7 +667,7 @@ interface JQueryAnimationOptions {
      */
     always?: (animation: JQueryPromise<any>, jumpedToEnd: boolean) => any; 
     /**
-     * A Boolean indicating whether to place the animation in the effects queue. If false, the animation will begin immediately. As of jQuery 1.7, the queue option can also accept a string, in which case the animation is added to the queue represented by that string. When a custom queue name is used the animation does not automatically start; you must call .dequeue("queuename") to start it.
+     * A boolean indicating whether to place the animation in the effects queue. If false, the animation will begin immediately. As of jQuery 1.7, the queue option can also accept a string, in which case the animation is added to the queue represented by that string. When a custom queue name is used the animation does not automatically start; you must call .dequeue("queuename") to start it.
      */
     queue?: any; 
     /**
@@ -889,7 +889,7 @@ interface JQueryStatic {
     /**
      * Relinquish jQuery's control of the $ variable.
      *
-     * @param removeAll A Boolean indicating whether to remove all jQuery variables from the global scope (including jQuery itself).
+     * @param removeAll A boolean indicating whether to remove all jQuery variables from the global scope (including jQuery itself).
      */
     noConflict(removeAll?: boolean): Object;
 
@@ -1105,7 +1105,7 @@ interface JQueryStatic {
      * Finds the elements of an array which satisfy a filter function. The original array is not affected.
      *
      * @param array The array to search through.
-     * @param func The function to process each item against. The first argument to the function is the item, and the second argument is the index. The function should return a Boolean value.  this will be the global window object.
+     * @param func The function to process each item against. The first argument to the function is the item, and the second argument is the index. The function should return a boolean value.  this will be the global window object.
      * @param invert If "invert" is false, or not provided, then the function returns an array consisting of all elements for which "callback" returns true. If "invert" is true, then the function returns an array consisting of all elements for which "callback" returns false.
      */
     grep<T>(array: T[], func: (elementOfArray: T, indexInArray: number) => boolean, invert?: boolean): T[];
@@ -1242,7 +1242,7 @@ interface JQueryStatic {
      *
      * @param data HTML string to be parsed
      * @param context DOM element to serve as the context in which the HTML fragment will be created
-     * @param keepScripts A Boolean indicating whether to include scripts passed in the HTML string
+     * @param keepScripts A boolean indicating whether to include scripts passed in the HTML string
      */
     parseHTML(data: string, context?: HTMLElement, keepScripts?: boolean): any[];
 
@@ -1251,7 +1251,7 @@ interface JQueryStatic {
      *
      * @param data HTML string to be parsed
      * @param context DOM element to serve as the context in which the HTML fragment will be created
-     * @param keepScripts A Boolean indicating whether to include scripts passed in the HTML string
+     * @param keepScripts A boolean indicating whether to include scripts passed in the HTML string
      */
     parseHTML(data: string, context?: Document, keepScripts?: boolean): any[];
 }
@@ -1476,7 +1476,7 @@ interface JQuery {
      * Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.
      *
      * @param className One or more class names (separated by spaces) to be toggled for each element in the matched set.
-     * @param swtch A Boolean (not just truthy/falsy) value to determine whether the class should be added or removed.
+     * @param swtch A boolean (not just truthy/falsy) value to determine whether the class should be added or removed.
      */
     toggleClass(className: string, swtch?: boolean): JQuery;
     /**
@@ -1700,7 +1700,7 @@ interface JQuery {
     /**
      * Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an integer (without "px") representation of the value or null if called on an empty set of elements.
      *
-     * @param includeMargin A Boolean indicating whether to include the element's margin in the calculation.
+     * @param includeMargin A boolean indicating whether to include the element's margin in the calculation.
      */
     outerHeight(includeMargin?: boolean): number;
 
@@ -1721,7 +1721,7 @@ interface JQuery {
     /**
      * Get the current computed width for the first element in the set of matched elements, including padding and border.
      *
-     * @param includeMargin A Boolean indicating whether to include the element's margin in the calculation.
+     * @param includeMargin A boolean indicating whether to include the element's margin in the calculation.
      */
     outerWidth(includeMargin?: boolean): number;
 
@@ -2257,16 +2257,16 @@ interface JQuery {
     /**
      * Stop the currently-running animation on the matched elements.
      *
-     * @param clearQueue A Boolean indicating whether to remove queued animation as well. Defaults to false.
-     * @param jumpToEnd A Boolean indicating whether to complete the current animation immediately. Defaults to false.
+     * @param clearQueue A boolean indicating whether to remove queued animation as well. Defaults to false.
+     * @param jumpToEnd A boolean indicating whether to complete the current animation immediately. Defaults to false.
      */
     stop(clearQueue?: boolean, jumpToEnd?: boolean): JQuery;
     /**
      * Stop the currently-running animation on the matched elements.
      *
      * @param queue The name of the queue in which to stop animations.
-     * @param clearQueue A Boolean indicating whether to remove queued animation as well. Defaults to false.
-     * @param jumpToEnd A Boolean indicating whether to complete the current animation immediately. Defaults to false.
+     * @param clearQueue A boolean indicating whether to remove queued animation as well. Defaults to false.
+     * @param jumpToEnd A boolean indicating whether to complete the current animation immediately. Defaults to false.
      */
     stop(queue?: string, clearQueue?: boolean, jumpToEnd?: boolean): JQuery;
 
@@ -2309,7 +2309,7 @@ interface JQuery {
     /**
      * Display or hide the matched elements.
      *
-     * @param showOrHide A Boolean indicating whether to show or hide the elements.
+     * @param showOrHide A boolean indicating whether to show or hide the elements.
      */
     toggle(showOrHide: boolean): JQuery;
 
@@ -3173,8 +3173,8 @@ interface JQuery {
     /**
      * Create a deep copy of the set of matched elements.
      * 
-     * param withDataAndEvents A Boolean indicating whether event handlers and data should be copied along with the elements. The default value is false.
-     * param deepWithDataAndEvents A Boolean indicating whether event handlers and data for all children of the cloned element should be copied. By default its value matches the first argument's value (which defaults to false).
+     * param withDataAndEvents A boolean indicating whether event handlers and data should be copied along with the elements. The default value is false.
+     * param deepWithDataAndEvents A boolean indicating whether event handlers and data for all children of the cloned element should be copied. By default its value matches the first argument's value (which defaults to false).
      */
     clone(withDataAndEvents?: boolean, deepWithDataAndEvents?: boolean): JQuery;
 
