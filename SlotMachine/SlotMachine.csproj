@@ -897,6 +897,7 @@
     <Content Include="js\version.json" />
     <Content Include="js\boot.js" />
     <Content Include="js\console.js" />
+    <Content Include="js\tslint.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

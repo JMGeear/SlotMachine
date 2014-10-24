@@ -18,7 +18,6 @@ var Winner: number = 0;
 
 var SpinButton: createjs.Bitmap;
 var SpinDisable: createjs.Bitmap;
-
 var turn: number = 0;
 var winnings: number = 0;
 var winNum: number = 0;
@@ -26,7 +25,6 @@ var lossNum: number = 0;
 var spinResult;
 var instruments: string = "";
 var winRatio: number = 0;
-
 var violin: number = 0;
 var snare: number = 0;
 var piano: number = 0;
@@ -89,7 +87,7 @@ function handleTick(e): void {
 
 function start(): void {
     drawSlotMachine();
-    createjs.Sound.play('casino', createjs.Sound.INTERRUPT_NONE, 0, 0, -1, 1, 0);
+    createjs.Sound.play('casino', createjs.Sound.INTERRUPT_NONE, 0, 0, -1);
 
 }
 
@@ -124,26 +122,26 @@ function drawSlotMachine(): void {
     // define blank image path and call drawReels function
     drawReels('blank', 'blank', 'blank');
 
-    // Display Jackpot, Total Credits, Winner Paid and Bet Labels
-    JackPotLabel = new createjs.Text(Jackpot.toString(), "30px Consolas", "#FF0000");
+    // Display Jackpot, Total Credits, Bet and Winner Paid Labels
+    JackPotLabel = new createjs.Text(Jackpot.toString(), "30px tinytots, Consolas", "#FF0000");
     JackPotLabel.x = 190;
     JackPotLabel.y = 228;
     JackPotLabel.textAlign = "right";
     game.addChild(JackPotLabel);
 
-    creditsLabel = new createjs.Text(credits.toString(), "30px Consolas", "#FF0000");
+    creditsLabel = new createjs.Text(credits.toString(), "30px tinytots, Consolas", "#FF0000");
     creditsLabel.x = 320;
     creditsLabel.y = 228;
     creditsLabel.textAlign = "right";
     game.addChild(creditsLabel);
 
-    BetLabel = new createjs.Text(Bet.toString(), "30px Consolas", "#FF0000");
+    BetLabel = new createjs.Text(Bet.toString(), "30px tinytots, Consolas", "#FF0000");
     BetLabel.x = 441;
     BetLabel.y = 228;
     BetLabel.textAlign = "right";
     game.addChild(BetLabel);
 
-    paidLabel = new createjs.Text(Winner.toString(), "30px Consolas", "#FF0000");
+    paidLabel = new createjs.Text(Winner.toString(), "30px tinytots, Consolas", "#FF0000");
     paidLabel.x = 580;
     paidLabel.y = 228;
     paidLabel.textAlign = "right";
@@ -213,9 +211,11 @@ function drawSlotMachine(): void {
     Bet10Button.addEventListener("mouseover", function (event: MouseEvent) {
         Bet10Button.alpha = 0.5;
     });
+
     Bet10Button.addEventListener("mouseout", function (event: MouseEvent) {
         Bet10Button.alpha = 1.0;
     });
+
     var Bet25Button = new createjs.Bitmap(loadGame.getResult('bet25'));
     Bet25Button.x = 189;
     Bet25Button.y = 686;
@@ -226,9 +226,11 @@ function drawSlotMachine(): void {
         BetLabel.text = "25";
         createjs.Sound.play('coin');
     });
+
     Bet25Button.addEventListener("mouseover", function (event: MouseEvent) {
         Bet25Button.alpha = 0.5;
     });
+
     Bet25Button.addEventListener("mouseout", function (event: MouseEvent) {
         Bet25Button.alpha = 1.0;
     });
@@ -253,6 +255,7 @@ function drawSlotMachine(): void {
     stage.addChild(game);
 }
 
+/*Add a reset button event*/
 function ResetButtonClick(event: MouseEvent): void {
 
     if (confirm("The Reset Button was Pressed \n \nAre you Sure?")) {
@@ -260,12 +263,14 @@ function ResetButtonClick(event: MouseEvent): void {
     }
 }
 
+/*Add a Power button event*/
 function PowerButtonClick(event: MouseEvent): void {
     if (confirm("Power Off Game? \n \nAre you Sure?")) {
         window.close();
     }
 }
 
+/* Utility function to reset the player stats */
 function ResetAll(): void {
     // reset game variables
     Jackpot = 20000;
@@ -276,8 +281,6 @@ function ResetAll(): void {
     BetLabel.text = "0";
     Winner = 0;
     paidLabel.text = "0";
-
-    // reset player stats
     turn = 0;
     winNum = 0;
     lossNum = 0;
@@ -289,10 +292,12 @@ function ResetAll(): void {
     SpinDisable.visible = true;
 }
 
+/* Utility function to show Player Stats */
 function showPlayerStats() {
     winRatio = winNum / turn;
 }
 
+/* Utility function to reset all instrument tallies */
 function resetTally() {
     violin = 0;
     snare = 0;
@@ -304,6 +309,7 @@ function resetTally() {
     tuba = 0;
 }
 
+/* Check to see if the player won the jackpot */
 function checkJackPot() {
     /* compare two random values */
     var jackPotTry = Math.floor(Math.random() * 100 + 1);
@@ -318,6 +324,7 @@ function checkJackPot() {
     }
 }
 
+/* Utility function to show a win message and increase player money */
 function showWinMessage(): void {
     credits += winnings;
     creditsLabel.text = credits.toString();
@@ -338,6 +345,7 @@ function showLossMessage(): void {
     paidLabel.text = "0";
 }
 
+/* Utility function to check if a value falls within a range of bounds */
 function checkRange(value: number, lowerBounds: number, upperBounds: number): any {
     if (value >= lowerBounds && value <= upperBounds) {
         return value;
@@ -347,6 +355,8 @@ function checkRange(value: number, lowerBounds: number, upperBounds: number): an
     }
 }
 
+/* When this function is called it determines the betLine results.
+e.g. Guitar - Bass - Snare */
 function Reels() {
     var betLine = [" ", " ", " "];
     var outCome = [0, 0, 0];
@@ -391,6 +401,7 @@ function Reels() {
     return betLine;
 }
 
+/* This function calculates the player's winnings, if any */
 function determineWinnings() {
     if (tuba == 0) {
         if (violin == 3) {
@@ -451,17 +462,18 @@ function determineWinnings() {
 
 }
 
+/* When the player clicks the spin button the game kicks off */
 function SpinButtonClick(event: MouseEvent): void {
     if (credits == 0) {
         createjs.Sound.play('loser');
-        if (confirm("You ran out of Money! \nDo you want to play again?")) {
+        if (confirm("You ran out of Money! \nWould you like to play again?")) {
             ResetAll();
             showPlayerStats();
         }
     }
     else if (Bet > credits) {
         createjs.Sound.play('buzzer');
-        alert("You don't have enough Money to place that bet.");
+        alert("You don't have enough Money to place that bet!");
     }
     else if (Bet <= credits) {
         createjs.Sound.play('spin');
@@ -473,31 +485,5 @@ function SpinButtonClick(event: MouseEvent): void {
             showPlayerStats();
         }, 3000);
     }
-}
-
-function onResize() {
-    // browser viewport size
-    var currentWidth = window.innerWidth;
-    var currentHeight = window.innerHeight;
-
-    // stage dimensions
-    var originalWidth = 825; // your stage width
-    var originalHeight = 1024; // your stage height
-
-    // keep aspect ratio
-    var scale = Math.min(currentWidth / originalWidth, currentHeight / originalHeight);
-    stage.scaleX = scale;
-    stage.scaleY = scale;
-
-    // adjust canvas size
-    stage.canvas.width = originalWidth * scale;
-    stage.canvas.height = originalHeight * scale;
-
-    // update the stage
-    stage.update()
-}
-
-window.onresize = function () {
-    onResize();
 }
 
