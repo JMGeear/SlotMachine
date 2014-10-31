@@ -5,6 +5,9 @@
  * Description: Onlie Slot Machine game where the user starts with an initial
  * Cash amount of $1000.00 And has to try not to lose it all.
  * Version #1
+ * funtion onResize borrowed from http://community.createjs.com/ 
+ * Posted by digitaloranges on Jun 11, 2013 @ 02:06 PM 
+ * Instructor Tom Tsiliopoulos
  */
 
 //varibles
