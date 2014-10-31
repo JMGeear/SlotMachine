@@ -562,31 +562,31 @@ function SpinButtonClick(event: MouseEvent): void {
 function onResize()
 {
     // browser viewport size
-    var w = window.innerWidth;
-    var h = window.innerHeight;
+    var bvWidth = window.innerWidth;
+    var bvHeight = window.innerHeight;
 
     // stage dimensions
-    var ow = 825; // stage width
-    var oh = 1024; // stage height
+    var originalWidth = 825; // stage width
+    var originalHeight = 1024; // stage height
 
     if (keepAspectRatio) {
         // keep aspect ratio
-        var scale = Math.min(w / ow, h / oh);
+        var scale = Math.min(bvWidth / originalWidth, bvHeight / originalHeight);
         stage.scaleX = scale;
         stage.scaleY = scale;
 
         // adjust canvas size
-        stage.canvas.width = ow * scale;
-        stage.canvas.height = oh * scale;
+        stage.canvas.width = originalWidth * scale;
+        stage.canvas.height = originalHeight * scale;
     }
     else {
         // scale to exact fit
-        stage.scaleX = w / ow;
-        stage.scaleY = h / oh;
+        stage.scaleX = bvWidth / originalWidth;
+        stage.scaleY = bvHeight / originalHeight;
 
         // adjust canvas size
-        stage.canvas.width = ow * stage.scaleX;
-        stage.canvas.height = oh * stage.scaleY;
+        stage.canvas.width = originalWidth * stage.scaleX;
+        stage.canvas.height = originalHeight * stage.scaleY;
     }
 
     // update the stage
@@ -597,7 +597,3 @@ function onResize()
 window.onresize = function () {
     onResize();
 }
-
-
-
-
