@@ -1,21 +1,23 @@
 ﻿//varibles
-var stage: createjs.Stage;
+var LOADER_WIDTH = 400;
+var stage: createjs.Stage, loaderBar, loadInterval;
+var percentLoaded = 0;
 var loadGame;
 var game: createjs.Container;
+var keepAspectRatio = true;
 var slotMachineImage: createjs.Bitmap;
 var Reel1Image: createjs.Bitmap;
 var Reel2Image: createjs.Bitmap;
 var Reel3Image: createjs.Bitmap;
+var coinImage: createjs.Bitmap;
 var JackPotLabel: createjs.Text;
 var creditsLabel: createjs.Text;
 var paidLabel: createjs.Text;
 var BetLabel: createjs.Text
-
 var Jackpot: number = 20000;
 var credits: number = 1000;
 var Bet: number = 0;
 var Winner: number = 0;
-
 var SpinButton: createjs.Bitmap;
 var SpinDisable: createjs.Bitmap;
 var turn: number = 0;
@@ -36,12 +38,14 @@ var tuba: number = 0;
 
 // Preload files
 function preload() {
+    setupStage();
+    buildLoaderBar();
+    startLoad();
     loadGame = new createjs.LoadQueue(true);
     loadGame.installPlugin(createjs.Sound);
     loadGame.addEventListener("complete", init);
     loadGame.loadManifest([
         { id: "slotmachine", src: "img/slotmachine.jpg" },
-        { id: "blank", src: "img/blank.png" },
         { id: "tuba", src: "img/tuba.png" },
         { id: "spin", src: "img/spin.png" },
         { id: "resetbutton", src: "img/reset.png" },
@@ -58,26 +62,29 @@ function preload() {
         { id: "bass", src: "img/bass.png" },
         { id: "bongos", src: "img/bongos.png" },
         { id: "guitar", src: "img/guitar.png" },
-        { id: "buzzer", src: "sounds/Buzzer.mp3" },
+        { id: "coins", src: "img/coins.png" },
+        { id: "buzzer", src: "sounds/buzzer.mp3" },
         { id: "casino", src: "sounds/casino_ambience.mp3" },
         { id: "coin", src: "sounds/coin.mp3" },
         { id: "jackpot", src: "sounds/jackpot.mp3" },
-        { id: "loser", src: "sounds/loser.mp3" },
+        { id: "fail", src: "sounds/fail.mp3" },
         { id: "win", src: "sounds/win.mp3" },
         { id: "spin", src: "sounds/spin.mp3" }
     ]);
 
 }
 
+/*Init function starts the Slotmachine*/
 function init(): void {
     stage = new createjs.Stage(document.getElementById('canvas'));
     stage.enableMouseOver(20);
-    createjs.Ticker.addEventListener("tick", handleTick);
+    createjs.Ticker.addEventListener("tick", tick);
     createjs.Ticker.setFPS(60);
     start();
 }
 
-function handleTick(e): void {
+/*Disables spin button if no bet is placed*/
+function tick(e): void {
     if (Bet > 0) {
         SpinButton.visible = true;
         SpinDisable.visible = false;
@@ -85,14 +92,61 @@ function handleTick(e): void {
     stage.update();
 }
 
+/*Starts Game and initiates sounds*/
 function start(): void {
-    drawSlotMachine();
+    buildSlotMachine();
     createjs.Sound.play('casino', createjs.Sound.INTERRUPT_NONE, 0, 0, -1);
 
 }
 
-function drawReels(Reel1: string, Reel2: string, Reel3: string): void {
-    // Draw Reels
+/*Sets up stage for loader bar*/
+function setupStage() {
+    stage = new createjs.Stage(document.getElementById('canvas'));
+    createjs.Ticker.setFPS(60);
+    createjs.Ticker.addEventListener("tick", function (e) {
+        stage.update();
+    });
+}
+
+/*Draws loader bar*/
+function buildLoaderBar() {
+    loaderBar = new createjs.Shape();
+    loaderBar.x = loaderBar.y = 100;
+    loaderBar.graphics.setStrokeStyle(2);
+    loaderBar.graphics.beginStroke("#000");
+    loaderBar.graphics.drawRect(0, 0, LOADER_WIDTH, 40);
+    stage.addChild(loaderBar);
+}
+
+/*Redraws loader bar after each update*/
+function updateLoaderBar() {
+    loaderBar.graphics.clear();
+    loaderBar.graphics.beginFill('#00ff00');
+    loaderBar.graphics.drawRect(0, 0, LOADER_WIDTH * percentLoaded, 40);
+    loaderBar.graphics.endFill();
+    loaderBar.graphics.setStrokeStyle(2);
+    loaderBar.graphics.beginStroke("#000");
+    loaderBar.graphics.drawRect(0, 0, LOADER_WIDTH, 40);
+    loaderBar.graphics.endStroke();
+}
+
+/*Loader bar interval created*/
+function startLoad() {
+    loadInterval = setInterval(updateLoad, 50);
+}
+
+/*Updates the percentage of the preloaded assets*/
+function updateLoad() {
+    percentLoaded += .005;
+    updateLoaderBar();
+    if (percentLoaded >= 1) {
+        clearInterval(loadInterval);
+        stage.removeChild(loaderBar);
+    }
+}
+
+/*function draws the reels*/
+function buildReels(Reel1: string, Reel2: string, Reel3: string): void {
     Reel1Image = new createjs.Bitmap(loadGame.getResult(Reel1));
     Reel1Image.x = 140;
     Reel1Image.y = 401;
@@ -110,7 +164,22 @@ function drawReels(Reel1: string, Reel2: string, Reel3: string): void {
 
 }
 
-function drawSlotMachine(): void {
+/*function draws the coins*/
+function buildCoins(): void {
+    coinImage = new createjs.Bitmap(loadGame.getResult('coins'));
+    coinImage.x = 50;
+    coinImage.y = 780;
+    game.addChild(coinImage);
+}
+
+/*function to remove coins*/
+function removeCoins(): void {
+    game.removeChild(coinImage);
+
+    stage.update();
+}
+
+function buildSlotMachine(): void {
     // Declare new Container
     game = new createjs.Container();
 
@@ -119,8 +188,8 @@ function drawSlotMachine(): void {
     slotMachineImage = new createjs.Bitmap(loadGame.getResult('slotmachine'));
     game.addChild(slotMachineImage);
 
-    // define blank image path and call drawReels function
-    drawReels('blank', 'blank', 'blank');
+    // define tuba image and call drawReels function
+    buildReels('tuba', 'tuba', 'tuba');
 
     // Display Jackpot, Total Credits, Bet and Winner Paid Labels
     JackPotLabel = new createjs.Text(Jackpot.toString(), "30px tinytots, Consolas", "#FF0000");
@@ -286,6 +355,7 @@ function ResetAll(): void {
     lossNum = 0;
     winRatio = 0;
     winnings = 0;
+    removeCoins();
 
     //reset spin button
     SpinButton.visible = false;
@@ -333,6 +403,7 @@ function showWinMessage(): void {
     resetTally();
     createjs.Sound.play('win');
     checkJackPot();
+    buildCoins();
 }
 
 /* Utility function to show a loss message and reduce player money */
@@ -465,7 +536,7 @@ function determineWinnings() {
 /* When the player clicks the spin button the game kicks off */
 function SpinButtonClick(event: MouseEvent): void {
     if (credits == 0) {
-        createjs.Sound.play('loser');
+        createjs.Sound.play('fail');
         if (confirm("You ran out of Money! \nWould you like to play again?")) {
             ResetAll();
             showPlayerStats();
@@ -479,11 +550,54 @@ function SpinButtonClick(event: MouseEvent): void {
         createjs.Sound.play('spin');
         setTimeout(function () {
             spinResult = Reels();
-            drawReels(spinResult[0], spinResult[1], spinResult[2]);
+            buildReels(spinResult[0], spinResult[1], spinResult[2]);
             determineWinnings();
             turn++;
             showPlayerStats();
         }, 3000);
     }
 }
+
+/*Resize Stage*/
+function onResize()
+{
+    // browser viewport size
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
+    // stage dimensions
+    var ow = 825; // stage width
+    var oh = 1024; // stage height
+
+    if (keepAspectRatio) {
+        // keep aspect ratio
+        var scale = Math.min(w / ow, h / oh);
+        stage.scaleX = scale;
+        stage.scaleY = scale;
+
+        // adjust canvas size
+        stage.canvas.width = ow * scale;
+        stage.canvas.height = oh * scale;
+    }
+    else {
+        // scale to exact fit
+        stage.scaleX = w / ow;
+        stage.scaleY = h / oh;
+
+        // adjust canvas size
+        stage.canvas.width = ow * stage.scaleX;
+        stage.canvas.height = oh * stage.scaleY;
+    }
+
+    // update the stage
+    stage.update()
+}
+
+
+window.onresize = function () {
+    onResize();
+}
+
+
+
 
