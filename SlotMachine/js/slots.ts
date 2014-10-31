@@ -1,4 +1,13 @@
-﻿//varibles
+﻿/*Slots.ts
+ * Author: Jeff Geear
+ * Last Modified by: Jeff Geear
+ * Date last modified: Oct. 31/2014
+ * Description: Onlie Slot Machine game where the user starts with an initial
+ * Cash amount of $1000.00 And has to try not to lose it all.
+ * Version #1
+ */
+
+//varibles
 var LOADER_WIDTH = 400;
 var stage: createjs.Stage, loaderBar, loadInterval;
 var percentLoaded = 0;

@@ -1,4 +1,12 @@
-﻿//varibles
+﻿/*Slots.ts
+* Author: Jeff Geear
+* Last Modified by: Jeff Geear
+* Date last modified: Oct. 31/2014
+* Description: Onlie Slot Machine game where the user starts with an initial
+* Cash amount of $1000.00 And has to try not to lose it all.
+* Version #1
+*/
+//varibles
 var LOADER_WIDTH = 400;
 var stage, loaderBar, loadInterval;
 var percentLoaded = 0;
@@ -537,30 +545,30 @@ function SpinButtonClick(event) {
 /*Resize Stage*/
 function onResize() {
     // browser viewport size
-    var w = window.innerWidth;
-    var h = window.innerHeight;
+    var bvWidth = window.innerWidth;
+    var bvHeight = window.innerHeight;
 
     // stage dimensions
-    var ow = 825;
-    var oh = 1024;
+    var originalWidth = 825;
+    var originalHeight = 1024;
 
     if (keepAspectRatio) {
         // keep aspect ratio
-        var scale = Math.min(w / ow, h / oh);
+        var scale = Math.min(bvWidth / originalWidth, bvHeight / originalHeight);
         stage.scaleX = scale;
         stage.scaleY = scale;
 
         // adjust canvas size
-        stage.canvas.width = ow * scale;
-        stage.canvas.height = oh * scale;
+        stage.canvas.width = originalWidth * scale;
+        stage.canvas.height = originalHeight * scale;
     } else {
         // scale to exact fit
-        stage.scaleX = w / ow;
-        stage.scaleY = h / oh;
+        stage.scaleX = bvWidth / originalWidth;
+        stage.scaleY = bvHeight / originalHeight;
 
         // adjust canvas size
-        stage.canvas.width = ow * stage.scaleX;
-        stage.canvas.height = oh * stage.scaleY;
+        stage.canvas.width = originalWidth * stage.scaleX;
+        stage.canvas.height = originalHeight * stage.scaleY;
     }
 
     // update the stage
